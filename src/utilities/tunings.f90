@@ -8,6 +8,8 @@
 !! @copyright 2026 Creative Commons Zero (CC0) v1.0 Universal license.
 
 subroutine tunings(tones, freq1, oct_div, num_tones)
+    implicit none
+
     integer, dimension(num_tones), intent(out)  :: tones
     real, intent(in)                            :: freq1
     integer, intent(in)                         :: oct_div
@@ -18,38 +20,24 @@ subroutine tunings(tones, freq1, oct_div, num_tones)
     real    :: t9, coeff
     integer :: i
     t9    = 1.0 / oct_div
-    coeff = fpower(base, t9)
+    coeff = base ** t9
 
-    tones(1) = freq1 + 0.5
+    tones(1) = nint(freq1)
     do i = 2, num_tones
-        tones(i) = tones(i-1) * coeff + 0.5
+        tones(i) = nint(tones(i-1) * coeff)
     end do
 end subroutine tunings
-
-
-function fpower(val, to_the)
-    real                :: fpower
-    real, intent(in)    :: val
-    real, intent(in)    :: to_the
-
-    ! FIXME: We shouldn't need to invert the value on negative "to_the" power,
-    ! Just invoke exp() with the negative exponent...same thing, right?
-    fpower = exp(log(val) * abs(to_the))
-    if (to_the.LT.0.0) then
-        fpower = 1.0 / fpower
-    end if
-end function fpower
 
 
 program main
     implicit none
 
     integer, parameter              :: num_tones    = 84
-    integer, parameter              :: oct_div      = 19
-    real, parameter                 :: freq1        = 61.735    !< start scale
+    integer, parameter              :: oct_div      = 19        !< 19-EDO
+    real, parameter                 :: freq1        = 61.735    !< start scale on B1
 
     integer, dimension(num_tones)   :: tones
-    integer                         :: octive, i
+    integer                         :: i
 
     call tunings(tones, freq1, oct_div, num_tones)
     do i = 1, num_tones
