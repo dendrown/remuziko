@@ -36,23 +36,18 @@ src/utilities/tunings
 *.a
 *.lib
 
-# Executables
-*.exe
-*.out
-*.app
-
-# Build directories
-build/
-Build/
-build-*/
-
-# CMake generated files
-CMakeFiles/
-CMakeCache.txt
-cmake_install.cmake
+# Autotools generated files
 Makefile
-install_manifest.txt
-compile_commands.json
+Makefile.in
+aclocal.m4
+autom4te.cache/
+build-aux/
+config.log
+config.status
+configure
+*.o
+*.mod
+src/utilities/tunings
 
 # Temporary files
 *.tmp

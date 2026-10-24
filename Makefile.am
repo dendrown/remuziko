@@ -1,0 +1,3 @@
+SUBDIRS = src/utilities
+
+EXTRA_DIST = LICENSE README.md
