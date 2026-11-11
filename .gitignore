@@ -1,5 +1,6 @@
 # Targets
 src/utilities/tunings
+src/utilities/pitchtab
 
 # Prerequisites
 *.d
