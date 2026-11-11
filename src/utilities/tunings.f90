@@ -18,12 +18,12 @@ contains
     !! Each step is a fixed frequency ratio of 2**(1/oct_div) above the previous one,
     !! so oct_div steps span exactly one octave (a doubling of frequency).
     !!
-    !! @parameter[out]  tones   Scale frequencies in whole Hz, lowest to highest;
-    !!                          size sets the number of steps
-    !! @parameter[in]   freq1   Frequency in Hz of the scale's first note (tonic)
-    !! @parameter[in]   oct_div Equal steps per octave: 12 = standard tuning,
-    !!                          19 = 19-EDO (each step is 1200/oct_div cents)
-    subroutine tunings(tones, freq1, oct_div)
+    !! @param[out]  tones   Scale frequencies in whole Hz, lowest to highest;
+    !!                      size sets the number of steps
+    !! @param[in]   freq1   Frequency in Hz of the scale's first note (tonic)
+    !! @param[in]   oct_div Equal steps per octave: 12 = standard tuning,
+    !!                      19 = 19-EDO (each step is 1200/oct_div cents)
+    pure subroutine tunings(tones, freq1, oct_div)
         integer, intent(out)    :: tones(:)
         real, intent(in)        :: freq1
         integer, intent(in)     :: oct_div

@@ -45,9 +45,6 @@ build-aux/
 config.log
 config.status
 configure
-*.o
-*.mod
-src/utilities/tunings
 
 # Temporary files
 *.tmp
